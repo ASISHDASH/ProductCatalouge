@@ -52,7 +52,7 @@ public class ProductController {
 		return productmanager.getProductData(productType);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE ,value = "/getProductData/{productType}")
+	@RequestMapping(method = RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE ,value = "/getAllProductData/{productType}")
 	public List<ProductModel> getAllProductData() {
 		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.GETALLDATA);
 		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.CREATETABLE);
