@@ -36,13 +36,13 @@ public class ProductManager {
 		
 	}
 
-	public List<ProductModel> getData(String productType) {
+	public List<ProductModel> getProductData(String productType) {
 		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTMANAGER+"::"+ProductConstant.GETDATA);
 		return productMapperDAO.getData(productType);
 		
 	}
 
-	public Boolean addData(ProductModel product) {
+	public Boolean addProduct(ProductModel product) {
 		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTMANAGER+"::"+ProductConstant.ADDDATA);
 		return productMapperDAO.insertData(product);
 	}
@@ -50,6 +50,11 @@ public class ProductManager {
 	public Boolean removeProduct(Long id) {
 		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTMANAGER+"::"+ProductConstant.REMOVEPRODUCT);
 		return productMapperDAO.removeProduct(id);
+	}
+
+	public List<ProductModel> getAllProductData() {
+		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTMANAGER+"::"+ProductConstant.GETALLDATA);
+		return productMapperDAO.getAllProductData();
 	}
 
 	

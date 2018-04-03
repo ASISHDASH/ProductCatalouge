@@ -31,4 +31,7 @@ public interface IProductMapperDAO {
 	@Delete("Delete from product where id=#{id}")
 	public Boolean removeProduct(Long id);
 
+	@Select("select * from product")
+	public List<ProductModel> getAllProductData();
+
 }

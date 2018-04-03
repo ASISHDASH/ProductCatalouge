@@ -43,24 +43,34 @@ public class ProductController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE ,value = "/getProductData/{productType}")
-	public List<ProductModel> getData(@PathVariable String productType) {
-		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.REMOVEPRODUCT);
+	public List<ProductModel> getProductData(@PathVariable String productType) {
+		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.GETDATA);
 		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.CREATETABLE);
-		productmanager.createProductTable();
+		productmanager.createProductTable();//if table not exist
 		log.info(ProductConstant.END+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.CREATETABLE);
 		log.info(ProductConstant.END+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.REMOVEPRODUCT);
-		return productmanager.getData(productType);
+		return productmanager.getProductData(productType);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE ,value = "/getProductData/{productType}")
+	public List<ProductModel> getAllProductData() {
+		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.GETALLDATA);
+		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.CREATETABLE);
+		productmanager.createProductTable();//if table not exist
+		log.info(ProductConstant.END+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.CREATETABLE);
+		log.info(ProductConstant.END+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.GETALLDATA);
+		return productmanager.getAllProductData();
 	}
 	
 	@RequestMapping(method = RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE, value = "/addProduct")
 	public Boolean addData( @RequestBody ProductModel product) {
-		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.REMOVEPRODUCT);
+		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.ADDDATA);
 		Boolean result;
 		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.CREATETABLE);
-		productmanager.createProductTable();
+		productmanager.createProductTable();//if table not exist
 		log.info(ProductConstant.END+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.CREATETABLE);
-		result=productmanager.addData(product);
-		log.info(ProductConstant.END+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.REMOVEPRODUCT);
+		result=productmanager.addProduct(product);
+		log.info(ProductConstant.END+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.ADDDATA);
 		log.info("end");
 		return result;
 	}
