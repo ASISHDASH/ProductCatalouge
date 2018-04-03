@@ -52,7 +52,7 @@ public class ProductController {
 		return productmanager.getProductData(productType);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE ,value = "/getAllProductData/{productType}")
+	@RequestMapping(method = RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE ,value = "/getAllProductData")
 	public List<ProductModel> getAllProductData() {
 		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.GETALLDATA);
 		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.CREATETABLE);
@@ -63,7 +63,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE, value = "/addProduct")
-	public Boolean addData( @RequestBody ProductModel product) {
+	public Boolean addProduct( @RequestBody ProductModel product) {
 		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.ADDDATA);
 		Boolean result;
 		log.info(ProductConstant.START+"::"+ProductConstant.PRODUCTCONTROLLER+"::"+ProductConstant.CREATETABLE);
